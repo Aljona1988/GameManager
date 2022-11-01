@@ -22,11 +22,11 @@ public class Game {
             }
         }
         if (player1 == null) {
-            throw new RuntimeException("The player is not found");
+            throw new NotRegisteredException("The player is not found");
         }
 
         if (player2 == null) {
-            throw new RuntimeException("The player is not found");
+            throw new NotRegisteredException("The player is not found");
 
         }
         if (player1.getStrength() > player2.getStrength()) {

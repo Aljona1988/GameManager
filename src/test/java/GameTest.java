@@ -18,6 +18,7 @@ public class GameTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
     public void shouldFirstBeMoreThanSecond() {
         Game game = new Game();
@@ -33,6 +34,7 @@ public class GameTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
     public void shouldEqualPlayers() {
         Game game = new Game();
@@ -47,5 +49,46 @@ public class GameTest {
 
         Assertions.assertEquals(expected, actual);
 
+    }
+
+    @Test
+    public void shouldGetId() {
+        Game game = new Game();
+        Player player1 = new Player(3, "Natalia", 110);
+        game.register(player1);
+
+
+        int expected = 3;
+        int actual = player1.getId();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldThrow1() {
+        Game game = new Game();
+        Player player1 = new Player(3, "Natalia", 110);
+        Player player2 = new Player(4, "Diego", 110);
+
+
+        game.register(player1);
+        game.register(player2);
+
+
+        Assertions.assertThrows(NotRegisteredException.class, () -> game.round("Natalia", "Milana"));
+    }
+
+    @Test
+    public void shouldThrow2() {
+        Game game = new Game();
+        Player player1 = new Player(3, "Mika", 110);
+        Player player2 = new Player(4, "Diego", 110);
+
+
+        game.register(player1);
+        game.register(player2);
+
+
+        Assertions.assertThrows(NotRegisteredException.class, () -> game.round("Natalia", "Diego"));
     }
 }
